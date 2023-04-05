@@ -19,3 +19,4 @@ class Item:
     def apply_discount(self) -> None:
         self.price = self.price * self.pay_rate
 
+
