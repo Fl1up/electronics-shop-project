@@ -31,7 +31,11 @@ class Item:
         with open('../src/items.csv', newline='') as f:
             reader = csv.DictReader(f)
             for row in reader:
-                cls.all.append(cls(row["name"], row["price"], row["quantity"]))
+                if len(row) < 10:
+                    cls.all.append(cls(row["name"], row["price"], row["quantity"]))
+                else:
+                    print("длина наименования товара больше 10 символов")
+                    pass
 
     @staticmethod
     def string_to_number(x):
