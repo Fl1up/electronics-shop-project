@@ -18,5 +18,8 @@ def test_string_to_number():
     assert Item.string_to_number(5) != str
 
 
-def test_name():
-    Item.name == str
+def test_repr():
+    assert type(repr(item1)) == str
+
+def test_str():
+    assert type(str(item1)) == str
