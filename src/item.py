@@ -1,4 +1,7 @@
 import csv
+
+
+
 class Item:
     pay_rate = 1.0
     all = []
@@ -18,31 +21,35 @@ class Item:
 
     @property
     def name(self):
-        return f"{self.__name}"
+        return self.__name
 
     @name.setter
     def name(self,word):
-        name = word.split(":")
-        for i in name:
-            self.__name = i
+        names = word.split(":")
+        for name in names:
+            if len(name) <= 10:
+                self.__name = name
+            else:
+                return f" Exception: Длина наименования товара превышает 10 символов"
 
     @classmethod
     def instantiate_from_csv(cls):
         with open('../src/items.csv', newline='') as f:
             reader = csv.DictReader(f)
             for row in reader:
-                if len(row) < 10:
+                if len(row["name"]) <= 10:
                     cls.all.append(cls(row["name"], row["price"], row["quantity"]))
                 else:
-                    print("длина наименования товара больше 10 символов")
-                    pass
+                    return f" Exception: Длина наименования товара превышает 10 символов"
+
 
     @staticmethod
     def string_to_number(x):
         return int(float(x))
 
     def __repr__(self):
-        return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
+        return f"{self.__class__.__name__}({self.__name}', {self.price}, {self.quantity})"
+
 
     def __str__(self):
-        return f'{self.name}'
+        return f'{self.__name}'
