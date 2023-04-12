@@ -39,9 +39,6 @@ class Item:
             for row in reader:
                 if len(row["name"]) <= 10:
                     cls.all.append(cls(row["name"], row["price"], row["quantity"]))
-                else:
-                    return f" Exception: Длина наименования товара превышает 10 символов"
-
 
     @staticmethod
     def string_to_number(x):
