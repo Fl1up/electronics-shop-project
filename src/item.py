@@ -34,7 +34,7 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls):
-        with open('../src/items.csv', newline='') as f:
+        with open('../src/items.csv', encoding='UTF-8') as f:
             reader = csv.DictReader(f)
             for row in reader:
                 if len(row["name"]) <= 10:
