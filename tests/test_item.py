@@ -1,8 +1,9 @@
 import pytest
-
 from src.item import Item
+from src.phone import Phone
 
 item1 = Item("Смартфон", 10000, 20)
+phone1 = Phone("iPhone 14", 120_000, 5, 2)
 
 
 def test_calculate_total_price():
@@ -21,5 +22,19 @@ def test_string_to_number():
 def test_repr():
     assert type(repr(item1)) == str
 
+
 def test_str():
     assert type(str(item1)) == str
+
+
+def test_add():
+    assert isinstance(phone1, Item) == True
+
+
+def test_affiliation():
+    assert issubclass(Phone, Item) == True
+
+
+def test_false_add():
+    with pytest.raises(NameError):
+        assert isinstance(phone1, pups) == False
