@@ -10,6 +10,6 @@ def test_language_str():
 
 def test_fail():
     with pytest.raises(AssertionError):
-        assert kb.language == "KZ"
+        assert kb.language == "CH"
 
 
