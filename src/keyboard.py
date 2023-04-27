@@ -1,28 +1,25 @@
 from src.item import Item
 
 class MixinLog:
-    Language = "EN"
+    __slots__ = ["__language"]
 
-    def __init__(self):
-        self._language = self.Language
+    def __init__(self, language="EN"):
+        self.__language = language
 
     @property
-    def language(self,):
-        return self._language
+    def language(self):
+        return self.__language
 
-    @language.setter
-    def language(self, value):
-        self._language = value
-        raise AttributeError("property 'language' of 'KeyBoard' object has no setter")
-
-class KeyBoard(Item, MixinLog):
     def change_lang(self):
         if self.language == "EN":
-            self._language = "RU"
+            self.__language = "RU"
             return self
-        elif self.language == "RU":
-            self._language = "EN"
+        else:
+            self.__language = "EN"
             return self
+
+class KeyBoard(Item, MixinLog):
+   pass
 
 
 

@@ -31,13 +31,13 @@ class Item:
     @classmethod
     def instantiate_from_csv(cls):
         try:
-            with open('txt.csv', "r", encoding='UTF-8') as f:
+            with open('items.csv', "r", encoding='UTF-8') as f:
                 reader = csv.DictReader(f)
                 for row in reader:
                     cls.all.append(cls(row["name"], row["price"], row["quantity"]))
         except FileNotFoundError:
             print("FileNotFoundError: Отсутствует файл item.csv")
-        print("Продолжение работы программы ")
+        raise
 
     @staticmethod
     def string_to_number(x):
