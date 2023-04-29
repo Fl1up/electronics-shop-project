@@ -1,5 +1,6 @@
 from src.item import Item
 
+
 class MixinLog:
     def __init__(self):
         self.language = "EN"
@@ -12,6 +13,7 @@ class MixinLog:
             self.language = "EN"
             return self
 
+
 class KeyBoard(Item, MixinLog):
     def __init__(self, name, price, quantity, language='EN'):
         super().__init__(name, price, quantity)
@@ -20,6 +22,12 @@ class KeyBoard(Item, MixinLog):
     @property
     def language(self):
         return self._language
+
+    @language.setter
+    def language(self, value):
+        if value not in ["EN", "RU"]:
+            raise AttributeError("property 'language' of 'KeyBoard' object has no setter")
+        self._language = value
 
 
 
